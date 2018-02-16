@@ -31,8 +31,10 @@ odb_compile(ODB_SRC
 set(SRC
     src/Deployment.cpp
     src/Storage.cpp
-    src/main.cpp
 )
 
-add_executable(test_model ${SRC} ${ODB_SRC})
-target_link_libraries(test_model ${ODB_LIBRARIES})
+add_library(sensor-db-model SHARED ${SRC} ${ODB_SRC})
+target_link_libraries(sensor-db-model ${ODB_LIBRARIES})
+
+add_executable(test-model src/main.cpp)
+target_link_libraries(test-model sensor-db-model)
