@@ -70,10 +70,10 @@ void sendMessage(SensorMsg_t* msg)
 {
   // split into 2 * 32 bit
   int32_t* ptr = (int32_t*) msg;
-  Serial.print( "sending: " ); Serial.println( *ptr );
-  rcSwitch.send(*ptr, 32);
+  //Serial.print( "sending: " ); Serial.println( *ptr );
+  rcSwitch.send(*ptr, 32); 
   
-  Serial.print( "sending: " ); Serial.println( *(ptr+1) );
+  //Serial.print( "sending: " ); Serial.println( *(ptr+1) );
   rcSwitch.send(*(ptr+1), 32);
 }
 
@@ -107,5 +107,5 @@ void loop(void)
   sendMessage(&messageAirTmp);
   sendMessage(&messageHumidity);
   
-  delay(1000);
+  //delay(1000);
 } 
